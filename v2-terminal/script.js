@@ -1,226 +1,211 @@
 /* V2 TERMINAL — script.js */
+'use strict';
 
-/* ===== SPLASH ===== */
-(function() {
-  document.body.style.overflow = 'hidden';
+/* =============================================
+   SPLASH BOOT SEQUENCE
+   ============================================= */
+(function () {
+  const lines = ['sb1','sb2','sb3','sb4','sb5'];
+  lines.forEach((id, i) => {
+    setTimeout(() => {
+      const el = document.getElementById(id);
+      if (el) el.classList.add('visible');
+    }, 400 + i * 480);
+  });
   setTimeout(() => {
     const splash = document.getElementById('splash');
-    if (splash) { splash.classList.add('fade-out'); }
-    document.body.style.overflow = '';
+    if (splash) splash.classList.add('hidden');
+    setTimeout(() => { if (splash) splash.style.display = 'none'; }, 700);
   }, 2800);
 })();
 
-/* ===== TYPED COMMAND ===== */
-document.addEventListener('DOMContentLoaded', function() {
-  const el = document.getElementById('typed-cmd');
+/* =============================================
+   LIVE CLOCK
+   ============================================= */
+function updateClocks() {
+  const now = new Date();
+  const t = now.toTimeString().slice(0, 8);
+  const mbTime = document.getElementById('mb-time');
+  const sfTime = document.getElementById('sf-time');
+  if (mbTime) mbTime.textContent = t;
+  if (sfTime) sfTime.textContent = t;
+}
+updateClocks();
+setInterval(updateClocks, 1000);
+
+/* =============================================
+   LIVE FEED WINDOW
+   ============================================= */
+const SYMBOLS = ['EURUSD', 'GBPUSD', 'USDJPY', 'XAUUSD', 'BTCUSD', 'NASDAQ', 'SP500', 'CRUDE', 'AUDUSD', 'NZDUSD'];
+const PRICES = {
+  EURUSD: 1.0842, GBPUSD: 1.2630, USDJPY: 148.53, XAUUSD: 2034.20,
+  BTCUSD: 52134.50, NASDAQ: 17482.30, SP500: 4982.12, CRUDE: 74.31,
+  AUDUSD: 0.6521, NZDUSD: 0.6112
+};
+let feedInterval;
+
+function buildFeedEntry() {
+  const sym = SYMBOLS[Math.floor(Math.random() * SYMBOLS.length)];
+  const type = Math.random() > 0.5 ? 'BUY' : 'SELL';
+  const basePrice = PRICES[sym];
+  const price = (basePrice + (Math.random() - 0.5) * basePrice * 0.001).toFixed(sym === 'USDJPY' ? 2 : sym === 'XAUUSD' || sym === 'BTCUSD' ? 2 : 4);
+  const plVal = (Math.random() * 1800 - 400).toFixed(2);
+  const pl = parseFloat(plVal) >= 0 ? `+$${plVal}` : `-$${Math.abs(plVal)}`;
+  const plPos = parseFloat(plVal) >= 0;
+
+  const now = new Date();
+  const ts = `${now.getHours().toString().padStart(2,'0')}:${now.getMinutes().toString().padStart(2,'0')}:${now.getSeconds().toString().padStart(2,'0')}`;
+
+  const div = document.createElement('div');
+  div.className = 'feed-entry';
+  div.innerHTML = `
+    <span class="fe-ts">${ts}</span>
+    <span class="fe-sym">${sym}</span>
+    <span class="fe-type ${type.toLowerCase()}">${type}</span>
+    <span class="fe-price">${price}</span>
+    <span class="fe-pl ${plPos ? 'pos' : 'neg'}">${pl}</span>
+  `;
+  return div;
+}
+
+function startFeed() {
+  const body = document.getElementById('feed-body');
+  if (!body) return;
+  for (let i = 0; i < 8; i++) body.appendChild(buildFeedEntry());
+  feedInterval = setInterval(() => {
+    const newEntry = buildFeedEntry();
+    body.insertBefore(newEntry, body.firstChild);
+    const entries = body.querySelectorAll('.feed-entry');
+    if (entries.length > 30) body.removeChild(body.lastChild);
+  }, 1400);
+}
+startFeed();
+
+/* =============================================
+   EQUITY DATA (REAL MYFXBOOK)
+   ============================================= */
+const equityData = [0,-5,-14,-25,-40,-50,10,60,110,105,120,100,90,82,98,175,215,210,195,172,180,168,152,148,155,210,297];
+const equityLabels = ['Nov 25','Nov 28','Dec 01','Dec 04','Dec 07','Dec 10','Dec 13','Dec 16','Dec 19','Dec 22','Dec 25','Dec 28','Dec 31','Jan 03','Jan 06','Jan 09','Jan 12','Jan 15','Jan 18','Jan 21','Jan 24','Jan 27','Jan 29','Jan 31','Feb 01','Feb 02'];
+
+function makeChart(ctxId, mini) {
+  const el = document.getElementById(ctxId);
   if (!el) return;
-  const cmd = 'run strategy_alpha --live --capital 100000';
-  let i = 0;
-  setTimeout(() => {
-    const t = setInterval(() => {
-      el.textContent = cmd.slice(0, i++);
-      if (i > cmd.length) clearInterval(t);
-    }, 55);
-  }, 3000);
-});
-
-/* ===== NAVBAR SCROLL ===== */
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 50);
-}, { passive: true });
-
-/* ===== HAMBURGER ===== */
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.querySelector('.nav-links');
-if (hamburger && navLinks) {
-  hamburger.addEventListener('click', () => navLinks.classList.toggle('nav-open'));
-}
-
-/* ===== GRID CANVAS ===== */
-(function() {
-  const canvas = document.getElementById('grid-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  let w, h, dotY = 0;
-  const GREEN = '#00FF41';
-  function resize() {
-    w = canvas.width = canvas.offsetWidth;
-    h = canvas.height = canvas.offsetHeight;
-  }
-  resize();
-  window.addEventListener('resize', resize);
-  const CELL = 40;
-  function draw() {
-    ctx.clearRect(0, 0, w, h);
-    ctx.strokeStyle = 'rgba(0,255,65,0.07)';
-    ctx.lineWidth = 0.5;
-    for (let x = 0; x < w; x += CELL) {
-      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, h); ctx.stroke();
-    }
-    for (let y = 0; y < h; y += CELL) {
-      ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(w, y); ctx.stroke();
-    }
-    // Moving dot row
-    ctx.fillStyle = GREEN;
-    for (let x = 0; x < w; x += CELL) {
-      ctx.beginPath(); ctx.arc(x, dotY % h, 2, 0, Math.PI * 2); ctx.fill();
-    }
-    dotY += 0.6;
-    requestAnimationFrame(draw);
-  }
-  draw();
-})();
-
-/* ===== HERO CHART ===== */
-function buildHeroChart() {
-  const canvas = document.getElementById('hero-chart');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const pts = 60;
-  const data = [];
-  let v = 100;
-  for (let i = 0; i < pts; i++) {
-    v += (Math.random() - 0.35) * 6;
-    v = Math.max(70, v);
-    data.push(v);
-  }
-  const grad = ctx.createLinearGradient(0, 0, 0, 180);
-  grad.addColorStop(0, 'rgba(0,255,65,0.25)');
-  grad.addColorStop(1, 'rgba(0,255,65,0)');
-  new Chart(ctx, {
+  const labels = mini ? equityLabels.filter((_, i) => i % 3 === 0) : equityLabels;
+  const data = mini ? equityData.filter((_, i) => i % 3 === 0) : equityData;
+  const gradient = el.getContext('2d').createLinearGradient(0, 0, 0, el.offsetHeight || 200);
+  gradient.addColorStop(0, 'rgba(0,255,65,0.3)');
+  gradient.addColorStop(1, 'rgba(0,255,65,0)');
+  return new Chart(el, {
     type: 'line',
     data: {
-      labels: data.map(() => ''),
-      datasets: [{ data, borderColor: '#00FF41', borderWidth: 2, backgroundColor: grad, fill: true, tension: 0.35, pointRadius: 0 }]
-    },
-    options: {
-      animation: false, maintainAspectRatio: false, responsive: true,
-      plugins: { legend: { display: false }, tooltip: { enabled: false } },
-      scales: {
-        x: { display: false },
-        y: { display: false }
-      }
-    }
-  });
-}
-
-/* ===== EQUITY CHART (REAL DATA) ===== */
-function buildEquityChart() {
-  const canvas = document.getElementById('equity-chart');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  const labels = ['Nov 25','Nov 28','Dec 01','Dec 04','Dec 07','Dec 10','Dec 13','Dec 16','Dec 19','Dec 22','Dec 25','Dec 28','Dec 31','Jan 03','Jan 06','Jan 09','Jan 12','Jan 15','Jan 18','Jan 21','Jan 24','Jan 27','Jan 29','Jan 31','Feb 01','Feb 02'];
-  const growthPct = [0,-5,-14,-25,-40,-50,10,60,110,105,120,100,90,82,98,175,215,210,195,172,180,168,152,148,155,210,297];
-  const grad = ctx.createLinearGradient(0, 0, 0, 300);
-  grad.addColorStop(0, 'rgba(0,255,65,0.3)');
-  grad.addColorStop(1, 'rgba(0,255,65,0)');
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: growthPct.map((_, i) => labels[i] || ''),
+      labels,
       datasets: [{
-        label: 'Gain %',
-        data: growthPct,
-        borderColor: '#00FF41', borderWidth: 2.5,
-        backgroundColor: grad, fill: true, tension: 0.35, pointRadius: 0,
-        pointHoverRadius: 4, pointHoverBackgroundColor: '#00FF41'
+        data,
+        borderColor: '#00FF41',
+        borderWidth: mini ? 1.5 : 2,
+        fill: true,
+        backgroundColor: gradient,
+        tension: 0.3,
+        pointRadius: 0,
+        pointHoverRadius: 4,
       }]
     },
     options: {
-      maintainAspectRatio: false, responsive: true,
+      responsive: true,
+      maintainAspectRatio: false,
       interaction: { mode: 'index', intersect: false },
       plugins: {
         legend: { display: false },
         tooltip: {
-          backgroundColor: 'rgba(0,0,0,0.95)', borderColor: '#00FF4122', borderWidth: 1,
-          titleColor: '#7FBF7F', bodyColor: '#00FF41',
           callbacks: {
-            title: ctx => ctx[0].label,
-            label: ctx => ` +${ctx.parsed.y.toFixed(1)}% gain`
-          }
+            label: ctx => ` ${ctx.parsed.y >= 0 ? '+' : ''}${ctx.parsed.y.toFixed(2)}%`
+          },
+          backgroundColor: '#111',
+          borderColor: '#00FF41',
+          borderWidth: 1,
+          titleColor: '#00FF41',
+          bodyColor: '#C8C8C8',
+          titleFont: { family: "'Roboto Mono'" },
+          bodyFont: { family: "'Roboto Mono'" },
         }
       },
       scales: {
         x: {
-          grid: { color: 'rgba(0,255,65,0.05)' },
-          ticks: { color: '#7FBF7F', font: { family: 'Roboto Mono', size: 9 }, maxTicksLimit: 7, maxRotation: 0 }
+          display: !mini,
+          ticks: { color: '#555', font: { family: "'Roboto Mono'", size: 9 }, maxTicksLimit: 6 },
+          grid: { color: 'rgba(0,255,65,0.05)' }
         },
         y: {
-          grid: { color: 'rgba(0,255,65,0.05)' },
+          display: !mini,
           ticks: {
-            color: '#7FBF7F', font: { family: 'Roboto Mono', size: 9 },
-            callback: v => '+' + v + '%'
-          }
+            color: '#555',
+            font: { family: "'Roboto Mono'", size: 9 },
+            callback: v => v + '%'
+          },
+          grid: { color: 'rgba(0,255,65,0.05)' }
         }
       }
     }
   });
 }
 
-/* ===== SWIPER ===== */
-function initSwiper() {
-  new Swiper('.testimonials-swiper', {
-    loop: true, autoplay: { delay: 5500, disableOnInteraction: false },
-    pagination: { el: '.swiper-pagination', clickable: true },
-    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-    breakpoints: { 0: { slidesPerView: 1, spaceBetween: 16 }, 768: { slidesPerView: 1, spaceBetween: 24 }, 1024: { slidesPerView: 1, spaceBetween: 32 } }
-  });
-}
+window.addEventListener('DOMContentLoaded', () => {
+  makeChart('equity-chart', true);
+  makeChart('equity-chart-proof', false);
+});
 
-/* ===== SCROLL REVEAL ===== */
-function initReveal() {
+/* =============================================
+   SWIPER TESTIMONIALS
+   ============================================= */
+window.addEventListener('DOMContentLoaded', () => {
+  if (typeof Swiper !== 'undefined') {
+    new Swiper('.testimonials-swiper', {
+      loop: true,
+      autoplay: { delay: 6000, disableOnInteraction: false },
+      pagination: { el: '.swiper-pagination', clickable: true },
+      navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    });
+  }
+});
+
+/* =============================================
+   SCROLL REVEAL
+   ============================================= */
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.section-win, .json-card, .ft-item, .psp-row, .as-item').forEach(el => {
+    el.classList.add('reveal');
+  });
   const obs = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-    });
-  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  document.querySelectorAll('.reveal').forEach((el, i) => {
-    el.style.transitionDelay = (i % 6) * 0.07 + 's';
-    obs.observe(el);
-  });
-}
-
-/* ===== COUNTER ANIMATION ===== */
-function animateCounters() {
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (!e.isIntersecting) return;
-      const el = e.target;
-      const text = el.textContent;
-      const num = parseFloat(text.replace(/[^0-9.]/g, ''));
-      if (isNaN(num)) return;
-      const prefix = text.match(/^[^0-9]*/)?.[0] || '';
-      const suffix = text.match(/[^0-9.]+$/)?.[0] || '';
-      const dur = 1800, start = performance.now();
-      function step(now) {
-        const p = Math.min((now - start) / dur, 1);
-        const ease = p < 0.5 ? 2*p*p : -1+(4-2*p)*p;
-        el.textContent = prefix + (num * ease).toFixed(num % 1 !== 0 ? 2 : 0) + suffix;
-        if (p < 1) requestAnimationFrame(step);
-      }
-      requestAnimationFrame(step);
-      obs.unobserve(el);
-    });
-  }, { threshold: 0.5 });
-  document.querySelectorAll('.sv').forEach(el => obs.observe(el));
-}
-
-/* ===== SMOOTH SCROLL ===== */
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener('click', e => {
-    e.preventDefault();
-    const t = document.querySelector(a.getAttribute('href'));
-    if (t) t.scrollIntoView({ behavior: 'smooth' });
-    navLinks?.classList.remove('nav-open');
-  });
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
 });
 
-/* ===== INIT ===== */
-document.addEventListener('DOMContentLoaded', () => {
-  buildHeroChart();
-  buildEquityChart();
-  initSwiper();
-  initReveal();
-  animateCounters();
-});
+/* =============================================
+   COUNTER ANIMATION
+   ============================================= */
+function animateCount(el) {
+  const target = parseFloat(el.dataset.target);
+  const isFloat = String(el.dataset.target).includes('.');
+  const dec = isFloat ? (String(el.dataset.target).split('.')[1] || '').length : 0;
+  const dur = 1800;
+  const step = 16;
+  const steps = dur / step;
+  let cur = 0;
+  const inc = target / steps;
+  const timer = setInterval(() => {
+    cur = Math.min(cur + inc, target);
+    el.textContent = (el.dataset.prefix || '') + cur.toFixed(dec) + (el.dataset.suffix || '');
+    if (cur >= target) clearInterval(timer);
+  }, step);
+}
+
+const countObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting && !e.target.dataset.counted) {
+      e.target.dataset.counted = '1';
+      animateCount(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+document.querySelectorAll('[data-target]').forEach(el => countObs.observe(el));

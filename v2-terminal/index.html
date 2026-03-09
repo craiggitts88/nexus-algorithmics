@@ -3,9 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nexus Algorithmics | Terminal Edition</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <title>Nexus Algorithmics | Terminal</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -13,307 +11,281 @@
 </head>
 <body>
 
-  <!-- SPLASH -->
-  <div id="splash">
-    <div class="splash-inner">
-      <img src="../splash.png" alt="Nexus Algorithmics" class="splash-logo" />
-      <div class="splash-terminal">
-        <span class="st-line" id="st1">> INITIALISING NEXUS CORE...</span>
-        <span class="st-line" id="st2">> LOADING STRATEGY MODULES...</span>
-        <span class="st-line" id="st3">> CONNECTING TO LIVE FEED...</span>
-        <span class="st-line" id="st4">> SYSTEM READY <span class="blink">_</span></span>
+<!-- SPLASH -->
+<div id="splash">
+  <div class="splash-logo-wrap">
+    <img src="../splash.png" alt="Nexus Algorithmics" class="splash-logo" />
+  </div>
+  <div class="splash-boot">
+    <div class="sb-line" id="sb1"><span class="sb-ok">[  OK  ]</span> Starting nexus-algo.service</div>
+    <div class="sb-line" id="sb2"><span class="sb-ok">[  OK  ]</span> Loading strategy modules</div>
+    <div class="sb-line" id="sb3"><span class="sb-ok">[  OK  ]</span> Connecting to live data feed</div>
+    <div class="sb-line" id="sb4"><span class="sb-warn">[ WARN ]</span> 2 cohort slots remaining</div>
+    <div class="sb-line" id="sb5"><span class="sb-ok">[  OK  ]</span> System ready<span class="blink">_</span></div>
+  </div>
+</div>
+
+<!-- MENUBAR -->
+<div id="menubar" class="menubar">
+  <div class="mb-left">
+    <img src="../logo.png" alt="Nexus" class="mb-logo" />
+    <span class="mb-sep">|</span>
+    <a href="#terminal-hero" class="mb-item">File</a>
+    <a href="#edge" class="mb-item">Strategy</a>
+    <a href="#proof" class="mb-item">Results</a>
+    <a href="#curriculum" class="mb-item">Modules</a>
+    <a href="#team" class="mb-item">Team</a>
+  </div>
+  <div class="mb-right">
+    <span class="mb-status"><span class="dot green"></span> LIVE FEED ACTIVE</span>
+    <span class="mb-sep">|</span>
+    <span class="mb-time" id="mb-time">--:--:--</span>
+    <span class="mb-sep">|</span>
+    <a href="#apply" class="mb-apply">>> APPLY NOW</a>
+  </div>
+</div>
+
+<!-- HERO — DUAL-PANE TERMINAL -->
+<section id="terminal-hero" class="hero-terminal-layout">
+  <div class="terminal-desktop">
+
+    <!-- WINDOW 1: STRATEGY INFO -->
+    <div class="term-win win-strategy">
+      <div class="twin-titlebar">
+        <div class="twin-dots"><span class="td red"></span><span class="td amber"></span><span class="td green"></span></div>
+        <span class="twin-title">nexus_algo — strategy_alpha_v7.py</span>
+        <span class="twin-badge blink-slow">● REC</span>
+      </div>
+      <div class="twin-body">
+        <div class="twin-prompt-block">
+          <span class="tpb-path">nexus@algo:~/strategies$</span>
+          <span class="tpb-cmd">run --strategy alpha_v7 --capital 100000 --live<span class="blink">_</span></span>
+        </div>
+        <div class="twin-output">
+          <p><span class="to-key">STATUS    </span><span class="to-val green">RUNNING</span></p>
+          <p><span class="to-key">CAPITAL   </span><span class="to-val">$100,000.00</span></p>
+          <p><span class="to-key">OPEN_POS  </span><span class="to-val green">7 LONG / 3 SHORT</span></p>
+          <p><span class="to-key">UNREALISED</span><span class="to-val green">+$4,217.83</span></p>
+          <p><span class="to-key">SESSION_PL</span><span class="to-val green">+$1,094.22</span></p>
+          <p><span class="to-key">MAX_DD    </span><span class="to-val amber">-2.14%</span></p>
+        </div>
+        <div class="twin-headline-block">
+          <h1>TRADE LIKE A<br /><span class="green">HEDGE FUND.</span><br />AUTOMATE YOUR EDGE.</h1>
+          <p class="twin-sub">Institutional-grade algorithmic trading education. Built by active quants running live capital.</p>
+          <div class="twin-cta-row">
+            <a href="#apply" class="btn btn-primary">>./apply_now.sh</a>
+            <a href="#curriculum" class="btn btn-outline">cat curriculum.md</a>
+          </div>
+        </div>
+        <div class="twin-kpis">
+          <div class="tkpi"><span class="tkpi-v">500+</span><span class="tkpi-k"># algos_deployed</span></div>
+          <span class="tkpi-pipe">|</span>
+          <div class="tkpi"><span class="tkpi-v">$2.4B</span><span class="tkpi-k"># instructor_aum</span></div>
+          <span class="tkpi-pipe">|</span>
+          <div class="tkpi"><span class="tkpi-v green">94%</span><span class="tkpi-k"># success_rate</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WINDOW 2: LIVE CHART -->
+    <div class="term-win win-chart">
+      <div class="twin-titlebar">
+        <div class="twin-dots"><span class="td red"></span><span class="td amber"></span><span class="td green"></span></div>
+        <span class="twin-title">GROWTH_CURVE — MYFXBOOK_VERIFIED</span>
+        <span class="twin-badge green">+297.04%</span>
+      </div>
+      <div class="twin-body chart-win-body">
+        <div class="chart-header-row">
+          <div class="chr-item"><span class="chr-k">GAIN</span><span class="chr-v green">+297.04%</span></div>
+          <div class="chr-item"><span class="chr-k">MONTHLY</span><span class="chr-v">77.93%</span></div>
+          <div class="chr-item"><span class="chr-k">MAX_DD</span><span class="chr-v amber">-43.79%</span></div>
+          <div class="chr-item"><span class="chr-k">P_FACTOR</span><span class="chr-v green">1.55</span></div>
+          <div class="chr-item"><span class="chr-k">TRADES</span><span class="chr-v">1,337</span></div>
+          <div class="chr-item"><span class="chr-k">ROC</span><span class="chr-v">&lt;0.01%</span></div>
+        </div>
+        <div class="equity-canvas-wrap hero-equity-wrap">
+          <canvas id="equity-chart"></canvas>
+        </div>
+        <div class="chart-footer-row">NOV 25, 2025 – FEB 02, 2026 | MYFXBOOK VERIFIED | REAL CAPITAL</div>
+      </div>
+    </div>
+
+    <!-- WINDOW 3: LIVE FEED -->
+    <div class="term-win win-feed">
+      <div class="twin-titlebar">
+        <div class="twin-dots"><span class="td red"></span><span class="td amber"></span><span class="td green"></span></div>
+        <span class="twin-title">live_trades.log — tail -f</span>
+        <span class="twin-badge amber">● STREAMING</span>
+      </div>
+      <div class="twin-body feed-body" id="feed-body"></div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TICKER -->
+<div class="ticker-bar">
+  <div class="ticker-track">
+    <div class="ticker-items">
+      <span class="ti green"><i class="fa-solid fa-arrow-up"></i> GAIN +297.04%</span><span class="ts">//</span>
+      <span class="ti">MONTHLY 77.93%</span><span class="ts">//</span>
+      <span class="ti amber">MAX DD -43.79%</span><span class="ts">//</span>
+      <span class="ti green">P.FACTOR 1.55</span><span class="ts">//</span>
+      <span class="ti">TRADES 1,337</span><span class="ts">//</span>
+      <span class="ti green">ROC &lt;0.01%</span><span class="ts">//</span>
+      <span class="ti">DAILY AVG 1.35%</span><span class="ts">//</span>
+      <span class="ti green">AVG WIN $1,273.85</span><span class="ts">//</span>
+      <span class="ti amber">AVG LOSS -$806.18</span><span class="ts">//</span>
+      <span class="ti green">BEST TRADE $10,524.02</span><span class="ts">//</span>
+      <span class="ti">EXPECTANCY $222.17</span><span class="ts">//</span>
+      <span class="ti green"><i class="fa-solid fa-arrow-up"></i> GAIN +297.04%</span><span class="ts">//</span>
+      <span class="ti">MONTHLY 77.93%</span><span class="ts">//</span>
+      <span class="ti amber">MAX DD -43.79%</span><span class="ts">//</span>
+      <span class="ti green">P.FACTOR 1.55</span><span class="ts">//</span>
+      <span class="ti">TRADES 1,337</span><span class="ts">//</span>
+    </div>
+  </div>
+</div>
+
+<!-- EDGE — TABLE FORMAT -->
+<section id="edge" class="section edge-section">
+  <div class="section-win">
+    <div class="twin-titlebar">
+      <div class="twin-dots"><span class="td red"></span><span class="td amber"></span><span class="td green"></span></div>
+      <span class="twin-title">edge_analysis.py — WHY ALGORITHMIC DOMINATES</span>
+      <span class="twin-badge">/* 01 */</span>
+    </div>
+    <div class="section-win-body">
+      <div class="edge-prompt">
+        <span class="ep-path">nexus@algo:~/analysis$</span>
+        <span class="ep-cmd">python edge_analysis.py --compare "human vs algo" --output table</span>
+      </div>
+      <table class="edge-table">
+        <thead>
+          <tr>
+            <th>MODULE</th><th>CAPABILITY</th><th>HUMAN_TRADER</th><th>ALGO_TRADER</th><th>DELTA</th><th>VERDICT</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="amber">001</td>
+            <td>Execution</td>
+            <td class="red-text">Emotional · Variable</td>
+            <td>Rule-based · Consistent</td>
+            <td class="green">98.7% better</td>
+            <td><span class="badge-ok">SUPERIOR</span></td>
+          </tr>
+          <tr>
+            <td class="amber">002</td>
+            <td>Speed</td>
+            <td class="red-text">~2 seconds avg</td>
+            <td>&lt;50 milliseconds</td>
+            <td class="green">40× faster</td>
+            <td><span class="badge-ok">SUPERIOR</span></td>
+          </tr>
+          <tr>
+            <td class="amber">003</td>
+            <td>Validation</td>
+            <td class="red-text">Intuition-based</td>
+            <td>10yr+ backtested</td>
+            <td class="green">Statistically proven</td>
+            <td><span class="badge-ok">SUPERIOR</span></td>
+          </tr>
+          <tr>
+            <td class="amber">004</td>
+            <td>Diversification</td>
+            <td class="red-text">1-3 markets max</td>
+            <td>15+ streams simultaneous</td>
+            <td class="green">15× wider</td>
+            <td><span class="badge-ok">SUPERIOR</span></td>
+          </tr>
+          <tr>
+            <td class="amber">005</td>
+            <td>Risk Control</td>
+            <td class="red-text">Manual · Reactive</td>
+            <td>Auto circuit-breakers</td>
+            <td class="green">Institutional-grade</td>
+            <td><span class="badge-ok">SUPERIOR</span></td>
+          </tr>
+          <tr>
+            <td class="amber">006</td>
+            <td>Scalability</td>
+            <td class="red-text">$500k ceiling</td>
+            <td>Unlimited AUM</td>
+            <td class="green">Infinite scale</td>
+            <td><span class="badge-ok">SUPERIOR</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="edge-result">
+        <span class="ep-path">Output:</span>
+        <span class="green"> Algorithmic trading is demonstrably superior in all 6 measured metrics. Adoption recommended.</span>
       </div>
     </div>
   </div>
+</section>
 
-  <!-- NAV -->
-  <nav id="navbar" class="navbar">
-    <div class="nav-container">
-      <a href="#hero" class="nav-logo">
-        <img src="../logo.png" alt="Nexus Algorithmics" class="nav-logo-img" />
-      </a>
-      <ul class="nav-links">
-        <li><a href="#edge"><span class="nav-bracket">[</span>EDGE<span class="nav-bracket">]</span></a></li>
-        <li><a href="#proof"><span class="nav-bracket">[</span>RESULTS<span class="nav-bracket">]</span></a></li>
-        <li><a href="#curriculum"><span class="nav-bracket">[</span>CURRICULUM<span class="nav-bracket">]</span></a></li>
-        <li><a href="#team"><span class="nav-bracket">[</span>TEAM<span class="nav-bracket">]</span></a></li>
-        <li><a href="#apply" class="nav-cta">> APPLY_NOW()</a></li>
-      </ul>
-      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+<!-- PROOF — SPLIT PANEL -->
+<section id="proof" class="section proof-section">
+  <div class="section-win">
+    <div class="twin-titlebar">
+      <div class="twin-dots"><span class="td red"></span><span class="td amber"></span><span class="td green"></span></div>
+      <span class="twin-title">performance_report.py — VERIFIED LIVE ACCOUNT — NOV 2025 – FEB 2026</span>
+      <span class="twin-badge">/* 02 */</span>
     </div>
-  </nav>
-
-  <!-- HERO -->
-  <section id="hero" class="hero">
-    <div class="scanlines"></div>
-    <canvas id="grid-canvas"></canvas>
-    <div class="hero-content">
-      <div class="hero-text">
-        <div class="hero-prompt">
-          <span class="prompt-path">nexus@algo:~$</span>
-          <span class="prompt-cmd" id="typed-cmd"></span><span class="blink">_</span>
-        </div>
-        <h1 class="hero-headline">TRADE LIKE A<br /><span class="green">HEDGE FUND.</span><br />AUTOMATE YOUR EDGE.</h1>
-        <p class="hero-sub">> Institutional-grade algorithmic trading education.<br />> Built by active quants for serious investors.</p>
-        <div class="hero-cta-group">
-          <a href="#apply" class="btn btn-primary">./apply_for_mentorship.sh</a>
-          <a href="#curriculum" class="btn btn-ghost">cat curriculum.md</a>
-        </div>
-        <div class="hero-stats">
-          <div class="stat-item">
-            <span class="stat-value">500+</span>
-            <span class="stat-label">// algorithms_deployed</span>
-          </div>
-          <span class="stat-pipe">|</span>
-          <div class="stat-item">
-            <span class="stat-value">$2.4B+</span>
-            <span class="stat-label">// aum_by_instructors</span>
-          </div>
-          <span class="stat-pipe">|</span>
-          <div class="stat-item">
-            <span class="stat-value green">94%</span>
-            <span class="stat-label">// student_success</span>
-          </div>
+    <div class="section-win-body proof-layout">
+      <div class="proof-stat-panel">
+        <div class="psp-title">STAT_READOUT:</div>
+        <div class="psp-row header-row"><span>METRIC</span><span>VALUE</span></div>
+        <div class="psp-row"><span class="pr-k">TOTAL_GAIN</span><span class="pr-v green">+297.04%</span></div>
+        <div class="psp-row"><span class="pr-k">MONTHLY_AVG</span><span class="pr-v">77.93%</span></div>
+        <div class="psp-row"><span class="pr-k">DAILY_GAIN</span><span class="pr-v">1.35%</span></div>
+        <div class="psp-row"><span class="pr-k">MAX_DRAWDOWN</span><span class="pr-v amber">-43.79%</span></div>
+        <div class="psp-row"><span class="pr-k">PROFIT_FACTOR</span><span class="pr-v green">1.55</span></div>
+        <div class="psp-row"><span class="pr-k">RISK_OF_RUIN</span><span class="pr-v">&lt;0.01%</span></div>
+        <div class="psp-row"><span class="pr-k">TOTAL_TRADES</span><span class="pr-v green">1,337</span></div>
+        <div class="psp-row"><span class="pr-k">WIN_RATE_L</span><span class="pr-v">45.00%</span></div>
+        <div class="psp-row"><span class="pr-k">WIN_RATE_S</span><span class="pr-v green">54.00%</span></div>
+        <div class="psp-row"><span class="pr-k">AVG_WIN</span><span class="pr-v green">$1,273.85</span></div>
+        <div class="psp-row"><span class="pr-k">AVG_LOSS</span><span class="pr-v amber">-$806.18</span></div>
+        <div class="psp-row"><span class="pr-k">BEST_TRADE</span><span class="pr-v green">$10,524.02</span></div>
+        <div class="psp-row"><span class="pr-k">AVG_DURATION</span><span class="pr-v">9h 3m</span></div>
+        <div class="psp-row"><span class="pr-k">EXPECTANCY</span><span class="pr-v green">$222.17</span></div>
+        <div class="psp-verified">
+          <span class="green">✓ MYFXBOOK_VERIFIED</span>
+          <span class="text-dim">Real account · Real capital</span>
         </div>
       </div>
-      <div class="hero-terminal">
-        <div class="term-window">
-          <div class="term-titlebar">
-            <span class="term-dot red"></span>
-            <span class="term-dot amber"></span>
-            <span class="term-dot green-dot"></span>
-            <span class="term-title">STRATEGY_ALPHA_v7.py — LIVE</span>
-          </div>
-          <div class="term-body">
-            <div class="chart-canvas-wrap">
-              <canvas id="hero-chart"></canvas>
-            </div>
-            <div class="term-metrics">
-              <div class="tm">
-                <span class="tm-k">GAIN</span>
-                <span class="tm-v green">+297.04%</span>
-              </div>
-              <div class="tm">
-                <span class="tm-k">MONTHLY</span>
-                <span class="tm-v">77.93%</span>
-              </div>
-              <div class="tm">
-                <span class="tm-k">MAX_DD</span>
-                <span class="tm-v amber">-43.79%</span>
-              </div>
-              <div class="tm">
-                <span class="tm-k">P_FACTOR</span>
-                <span class="tm-v green">1.55</span>
-              </div>
-            </div>
-          </div>
+      <div class="proof-chart-panel">
+        <div class="pcp-label">equity_curve.growth_pct — NOV 25 '25 → FEB 02 '26</div>
+        <div class="equity-canvas-wrap proof-equity-wrap">
+          <canvas id="equity-chart-proof"></canvas>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- TRUST BAR -->
-  <div class="trust-bar">
-    <div class="trust-track">
-      <div class="trust-items">
-        <span class="ti"><i class="fa-solid fa-circle-check"></i> AS_TRADED_AT_TOP_HEDGE_FUNDS</span>
-        <span class="ts">//</span>
-        <span class="ti"><i class="fa-solid fa-lock"></i> PROPRIETARY_STRATEGIES</span>
-        <span class="ts">//</span>
-        <span class="ti"><i class="fa-solid fa-shield-halved"></i> INSTITUTIONAL_RISK_MANAGEMENT</span>
-        <span class="ts">//</span>
-        <span class="ti"><i class="fa-solid fa-chart-line"></i> 500+_ALGOS_BACKTESTED</span>
-        <span class="ts">//</span>
-        <span class="ti"><i class="fa-solid fa-dollar-sign"></i> LIVE_CAPITAL_DEPLOYED</span>
-        <span class="ts">//</span>
-        <span class="ti"><i class="fa-solid fa-graduation-cap"></i> EX-CITADEL·TWO_SIGMA·RENAISSANCE</span>
-        <span class="ts">//</span>
-        <span class="ti"><i class="fa-solid fa-circle-check"></i> AS_TRADED_AT_TOP_HEDGE_FUNDS</span>
-        <span class="ts">//</span>
-        <span class="ti"><i class="fa-solid fa-lock"></i> PROPRIETARY_STRATEGIES</span>
-        <span class="ts">//</span>
-        <span class="ti"><i class="fa-solid fa-shield-halved"></i> INSTITUTIONAL_RISK_MANAGEMENT</span>
-        <span class="ts">//</span>
-        <span class="ti"><i class="fa-solid fa-chart-line"></i> 500+_ALGOS_BACKTESTED</span>
-        <span class="ts">//</span>
-        <span class="ti"><i class="fa-solid fa-dollar-sign"></i> LIVE_CAPITAL_DEPLOYED</span>
-        <span class="ts">//</span>
-        <span class="ti"><i class="fa-solid fa-graduation-cap"></i> EX-CITADEL·TWO_SIGMA·RENAISSANCE</span>
-        <span class="ts">//</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- THE EDGE -->
-  <section id="edge" class="section edge-section">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label">/* 01 — THE EDGE */</span>
-        <h2 class="section-title">WHY ALGORITHMIC TRADING<br /><span class="green">DOMINATES EVERY OTHER APPROACH</span></h2>
-      </div>
-      <div class="edge-grid">
-        <div class="term-card reveal">
-          <div class="tc-header"><span class="tc-title">emotionless_execution.algo</span></div>
-          <div class="tc-body">
-            <div class="tc-icon"><i class="fa-solid fa-robot"></i></div>
-            <h3>Emotionless Execution</h3>
-            <p>Algorithms never panic-sell or deviate. Every trade executes with perfect discipline at defined parameters — every single time.</p>
-            <div class="tc-stat"><span class="green">98.7%</span> rule adherence vs 61% human average</div>
-          </div>
-        </div>
-        <div class="term-card reveal">
-          <div class="tc-header"><span class="tc-title">hft_precision.algo</span></div>
-          <div class="tc-body">
-            <div class="tc-icon"><i class="fa-solid fa-bolt"></i></div>
-            <h3>High-Frequency Precision</h3>
-            <p>Execute hundreds of trades per second across multiple instruments. Capture micro-inefficiencies invisible to manual traders.</p>
-            <div class="tc-stat"><span class="green">&lt;50ms</span> average execution latency</div>
-          </div>
-        </div>
-        <div class="term-card reveal">
-          <div class="tc-header"><span class="tc-title">backtest_superiority.algo</span></div>
-          <div class="tc-body">
-            <div class="tc-icon"><i class="fa-solid fa-flask"></i></div>
-            <h3>Backtested Superiority</h3>
-            <p>Every strategy validated against 10+ years of historical data. Walk-forward analysis, Monte Carlo simulation, statistical edge proven.</p>
-            <div class="tc-stat"><span class="green">10yr+</span> historical validation per strategy</div>
-          </div>
-        </div>
-        <div class="term-card reveal">
-          <div class="tc-header"><span class="tc-title">portfolio_diversify.algo</span></div>
-          <div class="tc-body">
-            <div class="tc-icon"><i class="fa-solid fa-chart-bar"></i></div>
-            <h3>Portfolio Diversification</h3>
-            <p>Run uncorrelated strategies across equities, futures, forex, crypto simultaneously. Institutional-grade portfolio construction.</p>
-            <div class="tc-stat"><span class="green">15+</span> uncorrelated alpha streams</div>
-          </div>
-        </div>
-        <div class="term-card reveal">
-          <div class="tc-header"><span class="tc-title">risk_control.algo</span></div>
-          <div class="tc-body">
-            <div class="tc-icon"><i class="fa-solid fa-gear"></i></div>
-            <h3>Systematic Risk Control</h3>
-            <p>Hard-coded position limits, drawdown circuit-breakers, real-time risk monitoring. The same frameworks used at Tier-1 hedge funds.</p>
-            <div class="tc-stat"><span class="amber">-8.3%</span> max drawdown on flagship strategy</div>
-          </div>
-        </div>
-        <div class="term-card reveal">
-          <div class="tc-header"><span class="tc-title">scale_infra.algo</span></div>
-          <div class="tc-body">
-            <div class="tc-icon"><i class="fa-solid fa-code"></i></div>
-            <h3>Scalable Infrastructure</h3>
-            <p>Strategies that scale from $10k to $10M without modification. Cloud-deployed, API-integrated, co-location ready.</p>
-            <div class="tc-stat"><span class="green">∞</span> scalable with zero manual overhead</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROOF -->
-  <section id="proof" class="section proof-section">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label">/* 02 — THE ALPHA */</span>
-        <h2 class="section-title">VERIFIED PERFORMANCE.<br /><span class="green">NOT THEORY. NOT PROMISES.</span></h2>
-        <p class="section-sub">Live Myfxbook-verified results. Real account. Real capital. No demo.</p>
-      </div>
-      <div class="proof-grid">
-        <div class="proof-left reveal">
-          <div class="term-card">
-            <div class="tc-header">
-              <span class="tc-title">GROWTH_CURVE — LIVE_ACCOUNT</span>
-              <span class="tc-badge green-badge">● MYFXBOOK VERIFIED</span>
-            </div>
-            <div class="tc-body">
-              <p class="equity-period">Nov 25, 2025 – Feb 02, 2026</p>
-              <div class="equity-canvas-wrap">
-                <canvas id="equity-chart"></canvas>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="proof-right reveal">
-          <div class="proof-stats-grid">
-            <div class="stat-card">
-              <span class="sk">TOTAL_GAIN</span>
-              <span class="sv green">+297%</span>
-              <span class="ss">Absolute gain · live account</span>
-            </div>
-            <div class="stat-card">
-              <span class="sk">MONTHLY_GAIN</span>
-              <span class="sv">77.93%</span>
-              <span class="ss">Average monthly return</span>
-            </div>
-            <div class="stat-card">
-              <span class="sk">MAX_DRAWDOWN</span>
-              <span class="sv amber">-43.79%</span>
-              <span class="ss">Peak-to-trough decline</span>
-            </div>
-            <div class="stat-card">
-              <span class="sk">PROFIT_FACTOR</span>
-              <span class="sv green">1.55</span>
-              <span class="ss">Gross profit / gross loss</span>
-            </div>
-            <div class="stat-card">
-              <span class="sk">RISK_OF_RUIN</span>
-              <span class="sv">&lt;0.01%</span>
-              <span class="ss">Probability of total loss</span>
-            </div>
-            <div class="stat-card">
-              <span class="sk">TOTAL_TRADES</span>
-              <span class="sv green">1,337</span>
-              <span class="ss">45% longs · 54% shorts won</span>
-            </div>
-          </div>
-          <div class="detail-strip">
-            <div class="ds-item"><span class="dk">DAILY</span><span class="dv">1.35%</span></div>
-            <div class="ds-item"><span class="dk">AVG_WIN</span><span class="dv green">$1,273.85</span></div>
-            <div class="ds-item"><span class="dk">AVG_LOSS</span><span class="dv amber">-$806.18</span></div>
-            <div class="ds-item"><span class="dk">BEST_TRADE</span><span class="dv green">$10,524.02</span></div>
-            <div class="ds-item"><span class="dk">TRADE_LEN</span><span class="dv">9h 3m</span></div>
-            <div class="ds-item"><span class="dk">EXPECTANCY</span><span class="dv green">$222.17</span></div>
-          </div>
-        </div>
-      </div>
-
-      <div class="testimonials-section reveal">
-        <div class="section-label">/* STUDENT_RESULTS */</div>
+        <div class="ts-label">/* LOG: student_results.txt */</div>
         <div class="swiper testimonials-swiper">
           <div class="swiper-wrapper">
             <div class="swiper-slide">
-              <div class="term-card testimonial-card">
-                <div class="tc-header"><span class="tc-title">student_review_001.log</span></div>
-                <div class="tc-body">
-                  <div class="testimonial-stars">★★★★★</div>
-                  <p>"Before Nexus I was manually trading with a 23% drawdown. Six months in, my Python mean-reversion strategy generated <strong class="green">+187% returns</strong> on a $50k account with a Sharpe of 0.81."</p>
-                  <div class="t-author"><span class="ta-name">James R.</span><span class="ta-title">// Former Retail Trader → Prop Desk London</span></div>
-                  <div class="t-result"><span class="green">+187% ROI</span> · 6mo period · $50k account</div>
-                </div>
+              <div class="log-entry">
+                <span class="log-ts">[2025-11-14 09:23:41]</span>
+                <span class="log-level green">[SUCCESS]</span>
+                <p class="log-msg">"Before Nexus I had a 23% drawdown. Six months later my Python mean-reversion strategy generated <strong class="green">+187% returns</strong> on a $50k account with a Sharpe of 0.81."</p>
+                <p class="log-author">James R. // Former Retail Trader → Prop Desk London // +187% ROI · 6mo · $50k</p>
               </div>
             </div>
             <div class="swiper-slide">
-              <div class="term-card testimonial-card">
-                <div class="tc-header"><span class="tc-title">student_review_002.log</span></div>
-                <div class="tc-body">
-                  <div class="testimonial-stars">★★★★★</div>
-                  <p>"I went from back-end developer to deploying a <strong class="green">live HFT strategy</strong> in 4 months. My bot averaged 340 trades/day with 71% win rate in the first quarter live."</p>
-                  <div class="t-author"><span class="ta-name">Sophia K.</span><span class="ta-title">// Software Engineer → Quant Trader</span></div>
-                  <div class="t-result"><span class="green">71% Win Rate</span> · Live HFT · 340 trades/day avg</div>
-                </div>
+              <div class="log-entry">
+                <span class="log-ts">[2025-09-03 14:07:12]</span>
+                <span class="log-level green">[SUCCESS]</span>
+                <p class="log-msg">"Back-end developer to deploying a <strong class="green">live HFT strategy</strong> in 4 months. Bot averaged 340 trades/day with 71% win rate in the first quarter live."</p>
+                <p class="log-author">Sophia K. // Software Engineer → Quant Trader // 71% WR · 340 trades/day</p>
               </div>
             </div>
             <div class="swiper-slide">
-              <div class="term-card testimonial-card">
-                <div class="tc-header"><span class="tc-title">student_review_003.log</span></div>
-                <div class="tc-body">
-                  <div class="testimonial-stars">★★★★★</div>
-                  <p>"PhD in Mathematics, zero trading experience. The curriculum took me to a momentum factor model that outperformed S&P by <strong class="green">+240bps/month</strong>. Now managing $2M AUM."</p>
-                  <div class="t-author"><span class="ta-name">Dr. David M.</span><span class="ta-title">// PhD Mathematics → $2M AUM Allocation</span></div>
-                  <div class="t-result"><span class="green">+240bps/mo</span> · S&amp;P Alpha · $2M AUM Allocated</div>
-                </div>
+              <div class="log-entry">
+                <span class="log-ts">[2025-07-22 11:55:03]</span>
+                <span class="log-level green">[SUCCESS]</span>
+                <p class="log-msg">"PhD in Math, zero trading experience. Curriculum took me to a momentum factor model <strong class="green">outperforming S&P by +240bps/month</strong>. Now managing $2M AUM."</p>
+                <p class="log-author">Dr. David M. // PhD Mathematics → $2M AUM Allocation // +240bps/mo</p>
               </div>
             </div>
           </div>
@@ -323,190 +295,200 @@
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- CURRICULUM -->
-  <section id="curriculum" class="section curriculum-section">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label">/* 03 — CURRICULUM */</span>
-        <h2 class="section-title">FROM FIRST PRINCIPLES<br /><span class="green">TO LIVE CAPITAL DEPLOYMENT</span></h2>
+<!-- CURRICULUM — FILE TREE -->
+<section id="curriculum" class="section curriculum-section">
+  <div class="section-win">
+    <div class="twin-titlebar">
+      <div class="twin-dots"><span class="td red"></span><span class="td amber"></span><span class="td green"></span></div>
+      <span class="twin-title">nexus_curriculum/ — tree -L 2</span>
+      <span class="twin-badge">/* 03 */</span>
+    </div>
+    <div class="section-win-body curriculum-layout">
+      <div class="filetree">
+        <div class="ft-prompt">
+          <span class="ep-path">nexus@algo:~$</span>
+          <span class="ep-cmd">tree nexus_programme/ -L 2 --color</span>
+        </div>
+        <div class="ft-output">
+          <p class="ft-root green">nexus_programme/</p>
+          <div class="ft-item"><span class="ft-branch">├──</span><span class="ft-dir amber">phase_01_foundations/</span><span class="ft-meta">weeks 1-3</span></div>
+          <div class="ft-sub">
+            <p><span class="ft-branch">│   ├──</span> <span class="ft-file">market_microstructure.py</span></p>
+            <p><span class="ft-branch">│   ├──</span> <span class="ft-file">order_flow_analysis.py</span></p>
+            <p><span class="ft-branch">│   └──</span> <span class="ft-file">statistical_price_series.ipynb</span></p>
+          </div>
+          <div class="ft-item"><span class="ft-branch">├──</span><span class="ft-dir amber">phase_02_quant_theory/</span><span class="ft-meta">weeks 4-7</span></div>
+          <div class="ft-sub">
+            <p><span class="ft-branch">│   ├──</span> <span class="ft-file">factor_models.py</span></p>
+            <p><span class="ft-branch">│   ├──</span> <span class="ft-file">mean_reversion_strategies.py</span></p>
+            <p><span class="ft-branch">│   └──</span> <span class="ft-file">statistical_arbitrage.ipynb</span></p>
+          </div>
+          <div class="ft-item"><span class="ft-branch">├──</span><span class="ft-dir amber">phase_03_python_backtesting/</span><span class="ft-meta">weeks 8-13</span></div>
+          <div class="ft-sub">
+            <p><span class="ft-branch">│   ├──</span> <span class="ft-file">vectorised_engine.py</span></p>
+            <p><span class="ft-branch">│   ├──</span> <span class="ft-file">walk_forward_analysis.py</span></p>
+            <p><span class="ft-branch">│   └──</span> <span class="ft-file">monte_carlo_simulation.py</span></p>
+          </div>
+          <div class="ft-item"><span class="ft-branch">├──</span><span class="ft-dir amber">phase_04_cpp_execution/</span><span class="ft-meta">weeks 14-19</span></div>
+          <div class="ft-sub">
+            <p><span class="ft-branch">│   ├──</span> <span class="ft-file">lock_free_queues.cpp</span></p>
+            <p><span class="ft-branch">│   ├──</span> <span class="ft-file">fix_protocol_integration.cpp</span></p>
+            <p><span class="ft-branch">│   └──</span> <span class="ft-file">realtime_position_mgr.cpp</span></p>
+          </div>
+          <div class="ft-item"><span class="ft-branch">└──</span><span class="ft-dir amber">phase_05_live_deployment/</span><span class="ft-meta">weeks 20-24</span></div>
+          <div class="ft-sub ft-sub-last">
+            <p><span class="ft-branch">    ├──</span> <span class="ft-file">aws_cloud_deploy.sh</span></p>
+            <p><span class="ft-branch">    ├──</span> <span class="ft-file">broker_api_connect.py</span></p>
+            <p><span class="ft-branch">    └──</span> <span class="ft-file">live_portfolio_risk.py</span></p>
+          </div>
+          <p class="ft-summary">5 directories, 15 files &nbsp;|&nbsp; <span class="green">24 WEEK PROGRAMME</span> &nbsp;|&nbsp; <span class="amber">12 STUDENT MAX COHORT</span></p>
+        </div>
       </div>
-      <div class="timeline">
-        <div class="timeline-line"></div>
-        <div class="timeline-item reveal">
-          <div class="tl-node"><span>01</span></div>
-          <div class="term-card tl-content">
-            <div class="tc-header"><span class="tc-title">phase_01 · WEEKS_1-3</span></div>
-            <div class="tc-body">
-              <h3>Market Fundamentals & Microstructure</h3>
-              <p>Order types, market microstructure, exchange architecture, and statistical properties of price series every quant must understand.</p>
-              <div class="tag-row"><span class="tag">Order Flow</span><span class="tag">Microstructure</span><span class="tag">Statistics</span><span class="tag">Data Pipelines</span></div>
-            </div>
-          </div>
+      <div class="curriculum-detail">
+        <div class="cd-block">
+          <p class="cd-label">/* Each phase includes: */</p>
+          <p><span class="green">✓</span> Weekly 1:1 mentor session with a former Tier-1 quant</p>
+          <p><span class="green">✓</span> Live peer code reviews and feedback</p>
+          <p><span class="green">✓</span> Proprietary strategy library access</p>
+          <p><span class="green">✓</span> Live market access from Week 20</p>
+          <p><span class="green">✓</span> Myfxbook-verified track record on completion</p>
         </div>
-        <div class="timeline-item reveal">
-          <div class="tl-node"><span>02</span></div>
-          <div class="term-card tl-content">
-            <div class="tc-header"><span class="tc-title">phase_02 · WEEKS_4-7</span></div>
-            <div class="tc-body">
-              <h3>Quantitative Finance & Strategy Theory</h3>
-              <p>Factor models, mean-reversion, momentum strategies, pairs trading, and statistical arbitrage underpinning all institutional strategy archetypes.</p>
-              <div class="tag-row"><span class="tag">Factor Models</span><span class="tag">Mean Reversion</span><span class="tag">Stat Arb</span></div>
-            </div>
-          </div>
+        <div class="cd-block">
+          <p class="cd-label">/* Requirements: */</p>
+          <p><span class="amber">→</span> Full-time commitment — 40hr/week minimum</p>
+          <p><span class="amber">→</span> Basic Python or C++ knowledge required</p>
+          <p><span class="amber">→</span> $25k minimum capital for live deployment phase</p>
         </div>
-        <div class="timeline-item reveal">
-          <div class="tl-node"><span>03</span></div>
-          <div class="term-card tl-content">
-            <div class="tc-header"><span class="tc-title">phase_03 · WEEKS_8-13</span></div>
-            <div class="tc-body">
-              <h3>Python Backtesting & Algo Development</h3>
-              <p>Institutional-grade backtesting from scratch. Vectorised & event-driven simulation, walk-forward analysis, Monte Carlo, transaction cost modelling.</p>
-              <div class="tag-row"><span class="tag">Python</span><span class="tag">Pandas</span><span class="tag">Walk-Forward</span><span class="tag">Monte Carlo</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="tl-node"><span>04</span></div>
-          <div class="term-card tl-content">
-            <div class="tc-header"><span class="tc-title">phase_04 · WEEKS_14-19</span></div>
-            <div class="tc-body">
-              <h3>Advanced C++ Execution & Low Latency</h3>
-              <p>Lock-free queues, FIX protocol integration, co-location, real-time position management. The same stack used by HFT firms globally.</p>
-              <div class="tag-row"><span class="tag">C++17</span><span class="tag">Low Latency</span><span class="tag">FIX Protocol</span></div>
-            </div>
-          </div>
-        </div>
-        <div class="timeline-item reveal">
-          <div class="tl-node"><span>05</span></div>
-          <div class="term-card tl-content">
-            <div class="tc-header"><span class="tc-title">phase_05 · WEEKS_20-24</span></div>
-            <div class="tc-body">
-              <h3>Live Deployment & Portfolio Management</h3>
-              <p>Deploy to live markets with real capital. Cloud infrastructure, broker APIs, real-time monitoring, portfolio risk management. Graduate with a live track record.</p>
-              <div class="tag-row"><span class="tag">AWS</span><span class="tag">Broker APIs</span><span class="tag">Live Trading</span><span class="tag">Track Record</span></div>
-            </div>
-          </div>
-        </div>
+        <a href="#apply" class="btn btn-primary btn-large">>./apply_for_programme.sh</a>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- TEAM -->
-  <section id="team" class="section team-section">
-    <div class="container">
-      <div class="section-header reveal">
-        <span class="section-label">/* 04 — TEAM */</span>
-        <h2 class="section-title">LEARN FROM THOSE<br /><span class="green">STILL IN THE ARENA</span></h2>
+<!-- TEAM — JSON PROFILES -->
+<section id="team" class="section team-section">
+  <div class="section-win">
+    <div class="twin-titlebar">
+      <div class="twin-dots"><span class="td red"></span><span class="td amber"></span><span class="td green"></span></div>
+      <span class="twin-title">GET /api/v1/faculty — 200 OK — faculty.json</span>
+      <span class="twin-badge">/* 04 */</span>
+    </div>
+    <div class="section-win-body">
+      <div class="ft-prompt">
+        <span class="ep-path">nexus@algo:~$</span>
+        <span class="ep-cmd">curl -s https://api.nexusalgorithmics.com/v1/faculty | python -m json.tool</span>
       </div>
-      <div class="team-grid">
-        <div class="term-card team-card reveal">
-          <div class="tc-header"><span class="tc-title">mercer_alexander.profile</span></div>
-          <div class="tc-body">
-            <div class="team-avatar"><i class="fa-solid fa-user"></i></div>
-            <h3 class="t-name">Alexander Mercer</h3>
-            <span class="t-title">Head of Quantitative Research</span>
-            <span class="t-firm">// Citadel · D.E. Shaw</span>
-            <p>15yr systematic equity and futures. Specialist in HFT market making and stat arb. Managed $800M quant AUM.</p>
-            <div class="tag-row"><span class="tag">Equities</span><span class="tag">HFT</span><span class="tag">Stat Arb</span></div>
+      <div class="json-output">
+        <span class="json-brace">[</span>
+        <div class="json-grid">
+          <div class="json-card">
+            <p><span class="jk">"name"</span><span class="jcolon">:</span> <span class="jv-str">"Alexander Mercer"</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"role"</span><span class="jcolon">:</span> <span class="jv-str">"Head of Quant Research"</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"firms"</span><span class="jcolon">:</span> <span class="jv-arr">["Citadel", "D.E.Shaw"]</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"aum_managed"</span><span class="jcolon">:</span> <span class="jv-str">"$800M"</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"specialty"</span><span class="jcolon">:</span> <span class="jv-arr">["HFT", "Stat Arb", "Equities"]</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"years_exp"</span><span class="jcolon">:</span> <span class="jv-num">15</span></p>
+          </div>
+          <div class="json-card json-card-featured">
+            <p><span class="jk">"name"</span><span class="jcolon">:</span> <span class="jv-str green">"Dr. Priya Sankar"</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"role"</span><span class="jcolon">:</span> <span class="jv-str">"Programme Director"</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"firms"</span><span class="jcolon">:</span> <span class="jv-arr">["Two Sigma", "Goldman QIS"]</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"education"</span><span class="jcolon">:</span> <span class="jv-str">"PhD Applied Math, MIT"</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"specialty"</span><span class="jcolon">:</span> <span class="jv-arr">["ML/AI", "Factors", "Options"]</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"lead"</span><span class="jcolon">:</span> <span class="jv-bool green">true</span></p>
+          </div>
+          <div class="json-card">
+            <p><span class="jk">"name"</span><span class="jcolon">:</span> <span class="jv-str">"Marcus Webb"</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"role"</span><span class="jcolon">:</span> <span class="jv-str">"Head of Exec Engineering"</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"firms"</span><span class="jcolon">:</span> <span class="jv-arr">["Renaissance", "Jump Trading"]</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"specialty"</span><span class="jcolon">:</span> <span class="jv-arr">["C++17", "Low Latency", "HFT"]</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"oms_throughput"</span><span class="jcolon">:</span> <span class="jv-str">"2M msgs/sec"</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"years_exp"</span><span class="jcolon">:</span> <span class="jv-num">12</span></p>
+          </div>
+          <div class="json-card">
+            <p><span class="jk">"name"</span><span class="jcolon">:</span> <span class="jv-str">"Elena Volkov"</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"role"</span><span class="jcolon">:</span> <span class="jv-str">"Head of Risk Management"</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"firms"</span><span class="jcolon">:</span> <span class="jv-arr">["Millennium", "Point72"]</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"specialty"</span><span class="jcolon">:</span> <span class="jv-arr">["VaR", "Portfolio", "Risk"]</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"aum_protected"</span><span class="jcolon">:</span> <span class="jv-str">"$1.2B"</span><span class="jcomma">,</span></p>
+            <p><span class="jk">"years_exp"</span><span class="jcolon">:</span> <span class="jv-num">12</span></p>
           </div>
         </div>
-        <div class="term-card team-card featured-card reveal">
-          <div class="tc-header"><span class="tc-title">sankar_dr_priya.profile</span><span class="tc-badge green-badge">LEAD</span></div>
-          <div class="tc-body">
-            <div class="team-avatar"><i class="fa-solid fa-user"></i></div>
-            <h3 class="t-name">Dr. Priya Sankar</h3>
-            <span class="t-title">Programme Director & Lead Quant</span>
-            <span class="t-firm">// Two Sigma · Goldman Sachs QIS</span>
-            <p>PhD Applied Math (MIT). ML-enhanced alpha generation. Led 12-quant team at Two Sigma. 3 peer-reviewed papers.</p>
-            <div class="tag-row"><span class="tag">ML/AI</span><span class="tag">Factors</span><span class="tag">Options</span></div>
-          </div>
-        </div>
-        <div class="term-card team-card reveal">
-          <div class="tc-header"><span class="tc-title">webb_marcus.profile</span></div>
-          <div class="tc-body">
-            <div class="team-avatar"><i class="fa-solid fa-user"></i></div>
-            <h3 class="t-name">Marcus Webb</h3>
-            <span class="t-title">Head of Execution Engineering</span>
-            <span class="t-firm">// Renaissance · Jump Trading</span>
-            <p>Principal C++ engineer. Co-architect of OMS processing 2M+ messages/sec. Evangelist for deterministic execution.</p>
-            <div class="tag-row"><span class="tag">C++</span><span class="tag">Low Latency</span><span class="tag">Infra</span></div>
-          </div>
-        </div>
-        <div class="term-card team-card reveal">
-          <div class="tc-header"><span class="tc-title">volkov_elena.profile</span></div>
-          <div class="tc-body">
-            <div class="team-avatar"><i class="fa-solid fa-user"></i></div>
-            <h3 class="t-name">Elena Volkov</h3>
-            <span class="t-title">Head of Risk Management</span>
-            <span class="t-firm">// Millennium · Point72</span>
-            <p>12yr institutional risk across multi-strategy funds. Designed VaR engines protecting $1.2B AUM.</p>
-            <div class="tag-row"><span class="tag">Risk</span><span class="tag">VaR</span><span class="tag">Portfolio</span></div>
-          </div>
-        </div>
+        <span class="json-brace">]</span>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FINAL CTA -->
-  <section id="apply" class="section cta-section">
-    <div class="container">
-      <div class="cta-content reveal">
-        <div class="cta-terminal">
-          <div class="tc-header"><span class="tc-title">application_portal.sh</span><span class="tc-badge green-badge">● 2 SPOTS REMAINING</span></div>
-          <div class="tc-body">
-            <span class="section-label">/* LIMITED INTAKE — 2026 COHORT */</span>
-            <h2 class="cta-headline">WE ONLY ACCEPT THE<br /><span class="green">MOST DEDICATED TRADERS.</span></h2>
-            <p class="cta-sub">> Cohort capped at <span class="green">12 students</span> for direct mentorship access.<br />> Current cohort: <span class="amber">83% full.</span> Applications close <span class="green">March 31, 2026.</span></p>
-            <a href="mailto:apply@nexusalgorithmics.com" class="btn btn-primary btn-large">./secure_your_spot.sh →</a>
-            <p class="cta-disc">// Applications reviewed within 48hr. Acceptance not guaranteed. We select for commitment, not background.</p>
-          </div>
-        </div>
+<!-- APPLY -->
+<section id="apply" class="section apply-section">
+  <div class="section-win apply-win">
+    <div class="twin-titlebar">
+      <div class="twin-dots"><span class="td red"></span><span class="td amber"></span><span class="td green"></span></div>
+      <span class="twin-title">apply.sh — APPLICATION PORTAL — 2026 COHORT</span>
+      <span class="twin-badge amber">2 SPOTS LEFT</span>
+    </div>
+    <div class="section-win-body apply-body">
+      <div class="apply-left">
+        <p><span class="ep-path">nexus@algo:~$</span> <span class="ep-cmd">./apply.sh --cohort 2026</span></p>
+        <br />
+        <p class="green">Welcome to the Nexus Algorithmics Application Portal.</p>
+        <p class="text-dim">Cohort 2026 — Maximum 12 students.</p>
+        <br />
+        <p><span class="amber">WARNING:</span> <span class="amber">2</span> of 12 spots remain. Deadline: <span class="green">March 31, 2026.</span></p>
+        <br />
+        <p>We do not select on background. We select on <span class="green">commitment.</span></p>
+        <p>Applications reviewed within 48 hours.</p>
+        <br />
+        <a href="mailto:apply@nexusalgorithmics.com" class="btn btn-primary btn-large">>./secure_your_spot.sh</a>
+        <p class="apply-disc">// Not accepting waitlist. Acceptance is not guaranteed.</p>
+      </div>
+      <div class="apply-right">
+        <p class="as-label">/* cohort_2026.json */</p>
+        <div class="as-item"><span class="jk">"cohort_size"</span><span class="jcolon">:</span> <span class="jv-num">12</span></div>
+        <div class="as-item"><span class="jk">"spots_taken"</span><span class="jcolon">:</span> <span class="jv-num">10</span></div>
+        <div class="as-item"><span class="jk">"spots_remaining"</span><span class="jcolon">:</span> <span class="jv-num amber">2</span></div>
+        <div class="as-item"><span class="jk">"application_deadline"</span><span class="jcolon">:</span> <span class="jv-str">"2026-03-31"</span></div>
+        <div class="as-item"><span class="jk">"programme_duration"</span><span class="jcolon">:</span> <span class="jv-str">"24 weeks"</span></div>
+        <div class="as-item"><span class="jk">"success_rate"</span><span class="jcolon">:</span> <span class="jv-num green">0.94</span></div>
+        <div class="as-item"><span class="jk">"avg_roi_6mo"</span><span class="jcolon">:</span> <span class="jv-str green">"+187%"</span></div>
+        <div class="as-item"><span class="jk">"acceptance_rate"</span><span class="jcolon">:</span> <span class="jv-num">0.22</span></div>
+        <div class="as-item"><span class="jk">"mentor_ratio"</span><span class="jcolon">:</span> <span class="jv-str">"1:3"</span></div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-top">
-        <div class="footer-brand">
-          <img src="../logo.png" alt="Nexus Algorithmics" class="footer-logo" />
-          <p class="footer-tag">// institutional-grade algo trading education</p>
-        </div>
-        <div class="footer-links">
-          <div class="footer-col">
-            <h4>programme/</h4>
-            <a href="#curriculum">curriculum.md</a>
-            <a href="#team">team.json</a>
-            <a href="#proof">results.log</a>
-            <a href="#apply">apply.sh</a>
-          </div>
-          <div class="footer-col">
-            <h4>company/</h4>
-            <a href="#">about.md</a>
-            <a href="#">alumni.json</a>
-            <a href="#">blog/</a>
-            <a href="#">contact.sh</a>
-          </div>
-          <div class="footer-col">
-            <h4>legal/</h4>
-            <a href="#">privacy.md</a>
-            <a href="#">terms.md</a>
-            <a href="#">risk.md</a>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <p>© 2026 Nexus Algorithmics Ltd. All rights reserved.</p>
-        <p class="disclaimer"><strong>Risk Disclaimer:</strong> Algorithmic trading involves substantial risk of loss. Past performance is not indicative of future results. Information provided is for educational purposes only and does not constitute financial advice. Never invest more than you can afford to lose.</p>
-      </div>
-    </div>
-  </footer>
+<!-- STATUS BAR FOOTER -->
+<footer class="statusbar-footer">
+  <div class="sf-left">
+    <img src="../logo.png" alt="Nexus Algorithmics" class="sf-logo" />
+    <span class="sf-sep">|</span>
+    <span class="text-dim">nexus@algo:~$</span>
+    <span class="green blink">_</span>
+  </div>
+  <div class="sf-center">
+    <a href="#edge">Strategy</a><span class="sf-sep">|</span>
+    <a href="#proof">Results</a><span class="sf-sep">|</span>
+    <a href="#curriculum">Modules</a><span class="sf-sep">|</span>
+    <a href="#team">Team</a><span class="sf-sep">|</span>
+    <a href="#apply">Apply</a>
+  </div>
+  <div class="sf-right">
+    <span class="text-dim">© 2026 Nexus Algorithmics Ltd.</span>
+    <span class="sf-sep">|</span>
+    <span class="green">● LIVE</span>
+    <span class="sf-sep">|</span>
+    <span class="sf-time" id="sf-time">--:--:--</span>
+  </div>
+</footer>
+<div class="risk-bar">Risk Disclaimer: Algorithmic trading involves substantial risk of loss. Past performance is not indicative of future results. Educational purposes only — not financial advice.</div>
 
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <script src="script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
