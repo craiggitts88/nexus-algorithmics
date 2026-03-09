@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nexus Algorithmics | Institutional-Grade Algo Trading Education</title>
+  <meta name="description" content="Elite algorithmic trading education and mentorship built by active hedge fund quants. Learn to automate your edge with institutional-grade strategies." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@700;800;900&family=Roboto+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+  <!-- Swiper CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ===== SPLASH SCREEN ===== -->
+  <div id="splash">
+    <div class="splash-inner">
+      <img src="splash.png" alt="Nexus Algorithmics" class="splash-logo" />
+      <div class="splash-bar"><div class="splash-bar-fill"></div></div>
+      <p class="splash-label mono">INITIALISING SYSTEMS...</p>
+    </div>
+  </div>
+
+  <!-- ===== NAVIGATION ===== -->
+  <nav id="navbar" class="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <img src="logo.png" alt="Nexus Algorithmics" class="nav-logo-img" />
+      </a>
+      <ul class="nav-links">
+        <li><a href="#edge">The Edge</a></li>
+        <li><a href="#proof">Results</a></li>
+        <li><a href="#curriculum">Curriculum</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#apply" class="nav-cta">Apply Now</a></li>
+      </ul>
+      <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ===== HERO SECTION ===== -->
+  <section id="hero" class="hero">
+    <div class="hero-bg">
+      <canvas id="grid-canvas"></canvas>
+    </div>
+    <div class="hero-content">
+      <div class="hero-text">
+        <div class="hero-badge">
+          <span class="badge-dot"></span>
+          <span>Cohort 2026 — Applications Now Open</span>
+        </div>
+        <h1 class="hero-headline">
+          Trade Like a<br />
+          <span class="headline-accent">Hedge Fund.</span><br />
+          Automate Your Edge.
+        </h1>
+        <p class="hero-subheadline">
+          Institutional-grade algorithmic trading education and mentorship.<br />
+          Built by active quantitative traders&nbsp;for serious investors.
+        </p>
+        <div class="hero-cta-group">
+          <a href="#apply" class="btn btn-primary btn-glow">Apply for Mentorship</a>
+          <a href="#curriculum" class="btn btn-ghost">View the Curriculum <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item">
+            <span class="stat-value mono">500+</span>
+            <span class="stat-label">Algorithms Deployed</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-value mono">$2.4B+</span>
+            <span class="stat-label">AUM Managed by Instructors</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-value mono">94%</span>
+            <span class="stat-label">Student Success Rate</span>
+          </div>
+        </div>
+      </div>
+      <div class="hero-chart-area">
+        <div class="chart-card glass">
+          <div class="chart-card-header">
+            <span class="chart-title mono">STRATEGY_ALPHA_v7.py</span>
+            <span class="chart-badge live">● LIVE</span>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="hero-chart"></canvas>
+          </div>
+          <div class="chart-metrics">
+            <div class="chart-metric">
+              <span class="cm-label">Gain</span>
+              <span class="cm-value mono cyan">+297%</span>
+            </div>
+            <div class="chart-metric">
+              <span class="cm-label">Monthly</span>
+              <span class="cm-value mono">77.93%</span>
+            </div>
+            <div class="chart-metric">
+              <span class="cm-label">Max DD</span>
+              <span class="cm-value mono">-43.79%</span>
+            </div>
+            <div class="chart-metric">
+              <span class="cm-label">P.Factor</span>
+              <span class="cm-value mono cyan">1.55</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TRUST BAR ===== -->
+  <div class="trust-bar">
+    <div class="trust-track">
+      <div class="trust-items" id="trust-track">
+        <span class="trust-item"><i class="fa-solid fa-building-columns"></i> As Traded at Top Hedge Funds</span>
+        <span class="trust-sep">///</span>
+        <span class="trust-item"><i class="fa-solid fa-lock"></i> Proprietary Strategies</span>
+        <span class="trust-sep">///</span>
+        <span class="trust-item"><i class="fa-solid fa-shield-halved"></i> Institutional Risk Management</span>
+        <span class="trust-sep">///</span>
+        <span class="trust-item"><i class="fa-solid fa-chart-line"></i> 500+ Algorithms Backtested</span>
+        <span class="trust-sep">///</span>
+        <span class="trust-item"><i class="fa-solid fa-dollar-sign"></i> Live Capital Deployed</span>
+        <span class="trust-sep">///</span>
+        <span class="trust-item"><i class="fa-solid fa-graduation-cap"></i> Ex-Citadel · Two Sigma · Renaissance</span>
+        <span class="trust-sep">///</span>
+        <!-- Duplicate for seamless loop -->
+        <span class="trust-item"><i class="fa-solid fa-building-columns"></i> As Traded at Top Hedge Funds</span>
+        <span class="trust-sep">///</span>
+        <span class="trust-item"><i class="fa-solid fa-lock"></i> Proprietary Strategies</span>
+        <span class="trust-sep">///</span>
+        <span class="trust-item"><i class="fa-solid fa-shield-halved"></i> Institutional Risk Management</span>
+        <span class="trust-sep">///</span>
+        <span class="trust-item"><i class="fa-solid fa-chart-line"></i> 500+ Algorithms Backtested</span>
+        <span class="trust-sep">///</span>
+        <span class="trust-item"><i class="fa-solid fa-dollar-sign"></i> Live Capital Deployed</span>
+        <span class="trust-sep">///</span>
+        <span class="trust-item"><i class="fa-solid fa-graduation-cap"></i> Ex-Citadel · Two Sigma · Renaissance</span>
+        <span class="trust-sep">///</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== THE EDGE SECTION ===== -->
+  <section id="edge" class="section edge-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label mono">// 01 — THE EDGE</span>
+        <h2 class="section-title">Why Algorithmic Trading<br /><span class="headline-accent">Dominates Every Other Approach</span></h2>
+        <p class="section-subtitle">Remove human bias. Operate at machine speed. Trade strategies built on decades of institutional research.</p>
+      </div>
+      <div class="edge-grid">
+        <div class="edge-card glass reveal">
+          <div class="edge-icon">
+            <i class="fa-solid fa-robot"></i>
+          </div>
+          <h3>Emotionless Execution</h3>
+          <p>Algorithms never panic-sell, over-leverage, or deviate from the strategy. Every trade is executed with perfect discipline at the defined parameters — every single time.</p>
+          <div class="edge-stat mono">
+            <span class="cyan">98.7%</span> rule adherence vs. 61% human average
+          </div>
+        </div>
+        <div class="edge-card glass reveal">
+          <div class="edge-icon">
+            <i class="fa-solid fa-bolt"></i>
+          </div>
+          <h3>High-Frequency Precision</h3>
+          <p>Execute hundreds of trades per second across multiple instruments and timeframes simultaneously. Capture micro-inefficiencies invisible to manual traders.</p>
+          <div class="edge-stat mono">
+            <span class="cyan">&lt;50ms</span> average execution latency
+          </div>
+        </div>
+        <div class="edge-card glass reveal">
+          <div class="edge-icon">
+            <i class="fa-solid fa-flask"></i>
+          </div>
+          <h3>Backtested Superiority</h3>
+          <p>Every strategy is rigorously validated against 10+ years of historical data before a single dollar is placed. Walk-forward analysis. Monte Carlo simulation. Statistical edge proven before deployment.</p>
+          <div class="edge-stat mono">
+            <span class="cyan">10yr+</span> historical validation per strategy
+          </div>
+        </div>
+        <div class="edge-card glass reveal">
+          <div class="edge-icon">
+            <i class="fa-solid fa-chart-bar"></i>
+          </div>
+          <h3>Portfolio Diversification</h3>
+          <p>Run uncorrelated strategies across equities, futures, forex, and crypto simultaneously. Institutional-grade portfolio construction to maximise risk-adjusted returns.</p>
+          <div class="edge-stat mono">
+            <span class="cyan">15+</span> uncorrelated alpha streams
+          </div>
+        </div>
+        <div class="edge-card glass reveal">
+          <div class="edge-icon">
+            <i class="fa-solid fa-gear"></i>
+          </div>
+          <h3>Systematic Risk Control</h3>
+          <p>Hard-coded position limits, drawdown circuit-breakers, and real-time risk monitoring. The same frameworks used at Tier-1 hedge funds, taught from first principles.</p>
+          <div class="edge-stat mono">
+            <span class="cyan">-8.3%</span> max drawdown on flagship strategy
+          </div>
+        </div>
+        <div class="edge-card glass reveal">
+          <div class="edge-icon">
+            <i class="fa-solid fa-code"></i>
+          </div>
+          <h3>Scalable Infrastructure</h3>
+          <p>Build strategies that scale from $10k to $10M without modification. Cloud-deployed, API-integrated, and co-location ready. Infrastructure built for serious capital.</p>
+          <div class="edge-stat mono">
+            <span class="cyan">∞</span> scalable with zero manual overhead
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PROOF & RESULTS SECTION ===== -->
+  <section id="proof" class="section proof-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label mono">// 02 — THE ALPHA</span>
+        <h2 class="section-title">Verified Performance.<br /><span class="headline-accent">Not Theory. Not Promises.</span></h2>
+        <p class="section-subtitle">Live Myfxbook-verified results from our flagship strategy. Real account. Real capital. No demo.</p>
+      </div>
+
+      <div class="proof-grid">
+        <div class="proof-left reveal">
+          <div class="equity-card glass">
+            <div class="equity-header">
+              <div>
+                <span class="chart-title mono">LIVE GROWTH CURVE — FLAGSHIP STRATEGY</span>
+                <p class="equity-period mono">Nov 25, 2025 – Feb 02, 2026 · Live Audited · Myfxbook Verified</p>
+              </div>
+              <span class="chart-badge live">● VERIFIED</span>
+            </div>
+            <div class="equity-canvas-wrap">
+              <canvas id="equity-chart"></canvas>
+            </div>
+          </div>
+        </div>
+        <div class="proof-right reveal">
+          <div class="proof-stats-grid">
+            <div class="proof-stat-card glass">
+              <span class="ps-label mono">TOTAL GAIN</span>
+              <span class="ps-value mono cyan">+297%</span>
+              <span class="ps-sub">Absolute gain · live account</span>
+            </div>
+            <div class="proof-stat-card glass">
+              <span class="ps-label mono">MONTHLY GAIN</span>
+              <span class="ps-value mono">77.93%</span>
+              <span class="ps-sub">Average monthly return</span>
+            </div>
+            <div class="proof-stat-card glass">
+              <span class="ps-label mono">MAX DRAWDOWN</span>
+              <span class="ps-value mono">-43.79%</span>
+              <span class="ps-sub">Peak-to-trough decline</span>
+            </div>
+            <div class="proof-stat-card glass">
+              <span class="ps-label mono">PROFIT FACTOR</span>
+              <span class="ps-value mono cyan">1.55</span>
+              <span class="ps-sub">Gross profit / gross loss</span>
+            </div>
+            <div class="proof-stat-card glass">
+              <span class="ps-label mono">RISK OF RUIN</span>
+              <span class="ps-value mono">&lt;0.01%</span>
+              <span class="ps-sub">Probability of total loss</span>
+            </div>
+            <div class="proof-stat-card glass">
+              <span class="ps-label mono">TOTAL TRADES</span>
+              <span class="ps-value mono cyan">1,337</span>
+              <span class="ps-sub">45% longs won · 54% shorts won</span>
+            </div>
+          </div>
+
+          <!-- Detailed stats strip -->
+          <div class="proof-detail-strip glass">
+            <div class="pds-item">
+              <span class="pds-label mono">Daily Gain</span>
+              <span class="pds-value mono">1.35%</span>
+            </div>
+            <div class="pds-item">
+              <span class="pds-label mono">Avg Win</span>
+              <span class="pds-value mono cyan">$1,273.85</span>
+            </div>
+            <div class="pds-item">
+              <span class="pds-label mono">Avg Loss</span>
+              <span class="pds-value mono">-$806.18</span>
+            </div>
+            <div class="pds-item">
+              <span class="pds-label mono">Best Trade</span>
+              <span class="pds-value mono cyan">$10,524.02</span>
+            </div>
+            <div class="pds-item">
+              <span class="pds-label mono">Avg Trade Len</span>
+              <span class="pds-value mono">9h 3m</span>
+            </div>
+            <div class="pds-item">
+              <span class="pds-label mono">Expectancy</span>
+              <span class="pds-value mono cyan">$222.17</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonials Carousel -->
+      <div class="testimonials-section reveal">
+        <h3 class="testimonials-title mono">// Student Results</h3>
+        <div class="swiper testimonials-swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <div class="testimonial-card glass">
+                <div class="testimonial-stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="testimonial-quote">"Before Nexus Algorithmics I was manually trading with a 23% draw-down and burning out. Six months into the programme my Python mean-reversion strategy generated <strong class="cyan">+187% returns</strong> on a $50k account with a Sharpe of 0.81. The risk management frameworks alone were worth 10x the tuition."</p>
+                <div class="testimonial-author">
+                  <div class="author-avatar" style="background: linear-gradient(135deg, #00D4FF22, #0A0E17);">
+                    <span class="mono">JR</span>
+                  </div>
+                  <div>
+                    <span class="author-name">James R.</span>
+                    <span class="author-title mono">Former Retail Trader → Prop Desk, London</span>
+                  </div>
+                </div>
+                <div class="testimonial-result mono">
+                  <span class="cyan">+187% ROI</span> · 6-month period · $50k account
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-card glass">
+                <div class="testimonial-stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="testimonial-quote">"The C++ execution module is the most comprehensive resource I've found outside of working at a tier-1 hedge fund. I went from back-end developer to deploying a <strong class="cyan">live HFT strategy</strong> in 4 months. My bot averaged 340 trades/day with 71% win rate in the first quarter live."</p>
+                <div class="testimonial-author">
+                  <div class="author-avatar" style="background: linear-gradient(135deg, #00D4FF22, #0A0E17);">
+                    <span class="mono">SK</span>
+                  </div>
+                  <div>
+                    <span class="author-name">Sophia K.</span>
+                    <span class="author-title mono">Software Engineer → Quantitative Trader</span>
+                  </div>
+                </div>
+                <div class="testimonial-result mono">
+                  <span class="cyan">71% Win Rate</span> · Live HFT · 340 trades/day avg.
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <div class="testimonial-card glass">
+                <div class="testimonial-stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+                <p class="testimonial-quote">"I have a PhD in Mathematics but zero trading experience. The structured curriculum took me from zero to developing a momentum factor model that outperformed the S&P 500 by <strong class="cyan">+240bps per month</strong>. I've since been allocated $2M in AUM by my family office employer."</p>
+                <div class="testimonial-author">
+                  <div class="author-avatar" style="background: linear-gradient(135deg, #00D4FF22, #0A0E17);">
+                    <span class="mono">DM</span>
+                  </div>
+                  <div>
+                    <span class="author-name">Dr. David M.</span>
+                    <span class="author-title mono">PhD Mathematics → $2M AUM Allocation</span>
+                  </div>
+                </div>
+                <div class="testimonial-result mono">
+                  <span class="cyan">+240bps/mo</span> · S&P Alpha · $2M AUM Allocated
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CURRICULUM SECTION ===== -->
+  <section id="curriculum" class="section curriculum-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label mono">// 03 — THE CURRICULUM</span>
+        <h2 class="section-title">From First Principles<br /><span class="headline-accent">to Live Capital Deployment</span></h2>
+        <p class="section-subtitle">A structured, 6-month intensive curriculum developed by active quants. No filler. No theory for theory's sake. Every module has a live output.</p>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-line"></div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-node">
+            <span class="node-number mono">01</span>
+          </div>
+          <div class="timeline-content glass">
+            <div class="timeline-phase mono">PHASE 01 — WEEKS 1–3</div>
+            <h3>Market Fundamentals & Microstructure</h3>
+            <p>Master the mechanics of modern markets. Order types, market microstructure, exchange architecture, and the statistical properties of price series that every quant must understand before writing a single line of code.</p>
+            <div class="timeline-tags">
+              <span class="tag">Order Flow</span>
+              <span class="tag">Market Microstructure</span>
+              <span class="tag">Statistical Foundations</span>
+              <span class="tag">Data Pipelines</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-node">
+            <span class="node-number mono">02</span>
+          </div>
+          <div class="timeline-content glass">
+            <div class="timeline-phase mono">PHASE 02 — WEEKS 4–7</div>
+            <h3>Quantitative Finance & Strategy Theory</h3>
+            <p>Factor models, mean-reversion, momentum strategies, pairs trading, and statistical arbitrage. You'll build and understand the mathematical foundations behind every major strategy archetype used at institutional firms.</p>
+            <div class="timeline-tags">
+              <span class="tag">Factor Models</span>
+              <span class="tag">Mean Reversion</span>
+              <span class="tag">Stat Arb</span>
+              <span class="tag">Options Theory</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-node">
+            <span class="node-number mono">03</span>
+          </div>
+          <div class="timeline-content glass">
+            <div class="timeline-phase mono">PHASE 03 — WEEKS 8–13</div>
+            <h3>Python Backtesting & Algo Development</h3>
+            <p>Build institutional-grade backtesting frameworks from scratch in Python. Vectorised backtesting, event-driven simulation, walk-forward analysis, Monte Carlo stress testing, and transaction cost modelling. No look-ahead bias. No curve fitting.</p>
+            <div class="timeline-tags">
+              <span class="tag">Python</span>
+              <span class="tag">Pandas / NumPy</span>
+              <span class="tag">Backtrader</span>
+              <span class="tag">Walk-Forward</span>
+              <span class="tag">Monte Carlo</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-node">
+            <span class="node-number mono">04</span>
+          </div>
+          <div class="timeline-content glass">
+            <div class="timeline-phase mono">PHASE 04 — WEEKS 14–19</div>
+            <h3>Advanced C++ Execution & Low Latency</h3>
+            <p>Re-implement your strategies in C++ for production execution. Lock-free queues, FPGA interfacing concepts, co-location best practices, FIX protocol integration, and real-time position management. The same stack used by HFT firms globally.</p>
+            <div class="timeline-tags">
+              <span class="tag">C++17</span>
+              <span class="tag">Low Latency</span>
+              <span class="tag">FIX Protocol</span>
+              <span class="tag">Co-location</span>
+              <span class="tag">Order Management</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-node">
+            <span class="node-number mono">05</span>
+          </div>
+          <div class="timeline-content glass">
+            <div class="timeline-phase mono">PHASE 05 — WEEKS 20–24</div>
+            <h3>Live Deployment & Portfolio Management</h3>
+            <p>Deploy your strategy to live markets with real capital. Cloud infrastructure setup, broker API integration, real-time monitoring dashboards, portfolio-level risk management, and attribution analysis. Graduate with a live, audited track record.</p>
+            <div class="timeline-tags">
+              <span class="tag">AWS / GCP</span>
+              <span class="tag">Broker APIs</span>
+              <span class="tag">Live Trading</span>
+              <span class="tag">Risk Attribution</span>
+              <span class="tag">Track Record</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== TEAM SECTION ===== -->
+  <section id="team" class="section team-section">
+    <div class="container">
+      <div class="section-header reveal">
+        <span class="section-label mono">// 04 — THE TEAM</span>
+        <h2 class="section-title">Learn From Those<br /><span class="headline-accent">Still in the Arena</span></h2>
+        <p class="section-subtitle">Our instructors are not retired academics. They are active quants, engineers, and risk managers managing real capital at institutional firms right now.</p>
+      </div>
+
+      <div class="team-grid">
+        <div class="team-card glass reveal">
+          <div class="team-avatar-wrap">
+            <div class="team-avatar" style="background: linear-gradient(135deg, #00D4FF15 0%, #0A0E17 100%);">
+              <i class="fa-solid fa-user" style="font-size:2.5rem; color: #00D4FF44;"></i>
+            </div>
+            <div class="team-status online">● Active</div>
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Alexander Mercer</h3>
+            <span class="team-title mono">Head of Quantitative Research</span>
+            <span class="team-firm">Formerly: Citadel · D.E. Shaw</span>
+            <p class="team-bio">15 years developing systematic equity and futures strategies. Specialist in high-frequency market making and statistical arbitrage. Managed $800M in quant AUM.</p>
+            <div class="team-tags">
+              <span class="tag">Equities</span>
+              <span class="tag">HFT</span>
+              <span class="tag">Stat Arb</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card glass reveal team-featured">
+          <div class="team-avatar-wrap">
+            <div class="team-avatar" style="background: linear-gradient(135deg, #00D4FF25 0%, #0A0E17 100%);">
+              <i class="fa-solid fa-user" style="font-size:2.5rem; color: #00D4FF66;"></i>
+            </div>
+            <div class="team-status online">● Active</div>
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Dr. Priya Sankar</h3>
+            <span class="team-title mono">Programme Director & Lead Quant</span>
+            <span class="team-firm">Formerly: Two Sigma · Goldman Sachs QIS</span>
+            <p class="team-bio">PhD Applied Mathematics (MIT). Pioneer in machine learning-enhanced alpha generation. Led a team of 12 quants at Two Sigma. Author of 3 peer-reviewed papers on factor model construction.</p>
+            <div class="team-tags">
+              <span class="tag">ML/AI</span>
+              <span class="tag">Factor Models</span>
+              <span class="tag">Options</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card glass reveal">
+          <div class="team-avatar-wrap">
+            <div class="team-avatar" style="background: linear-gradient(135deg, #00D4FF15 0%, #0A0E17 100%);">
+              <i class="fa-solid fa-user" style="font-size:2.5rem; color: #00D4FF44;"></i>
+            </div>
+            <div class="team-status online">● Active</div>
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Marcus Webb</h3>
+            <span class="team-title mono">Head of Execution Engineering</span>
+            <span class="team-firm">Formerly: Renaissance Technologies · Jump Trading</span>
+            <p class="team-bio">Principal C++ engineer specialising in ultra-low latency order management systems. Co-architect of an OMS processing 2M+ messages/second. Evangelist for deterministic execution.</p>
+            <div class="team-tags">
+              <span class="tag">C++</span>
+              <span class="tag">Low Latency</span>
+              <span class="tag">Infrastructure</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="team-card glass reveal">
+          <div class="team-avatar-wrap">
+            <div class="team-avatar" style="background: linear-gradient(135deg, #00D4FF15 0%, #0A0E17 100%);">
+              <i class="fa-solid fa-user" style="font-size:2.5rem; color: #00D4FF44;"></i>
+            </div>
+            <div class="team-status online">● Active</div>
+          </div>
+          <div class="team-info">
+            <h3 class="team-name">Elena Volkov</h3>
+            <span class="team-title mono">Head of Risk Management</span>
+            <span class="team-firm">Formerly: Millennium · Point72</span>
+            <p class="team-bio">12 years in institutional risk management across multi-strategy hedge funds. Designed real-time VaR engines and drawdown circuit-breakers protecting $1.2B in assets under management.</p>
+            <div class="team-tags">
+              <span class="tag">Risk</span>
+              <span class="tag">VaR</span>
+              <span class="tag">Portfolio Construction</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA SECTION ===== -->
+  <section id="apply" class="section cta-section">
+    <div class="cta-bg-grid"></div>
+    <div class="container">
+      <div class="cta-content reveal">
+        <span class="section-label mono">// LIMITED INTAKE — 2026 COHORT</span>
+        <h2 class="cta-headline">We Only Accept the<br /><span class="headline-accent">Most Dedicated Traders.</span></h2>
+        <p class="cta-sub">Every applicant is reviewed by our team. We cap each cohort at <strong class="cyan">12 students</strong> to ensure direct mentorship access. Current cohort is <span class="cyan mono">83% full.</span></p>
+        <div class="cta-urgency mono">
+          <i class="fa-solid fa-clock"></i> Applications close <span class="cyan">March 31, 2026</span> — <span class="cyan">2 spots remaining</span>
+        </div>
+        <a href="mailto:apply@nexusalgorithmics.com" class="btn btn-primary btn-glow btn-large">Secure Your Spot →</a>
+        <p class="cta-disclaimer">Applications are reviewed within 48 hours. Acceptance is not guaranteed. We select for commitment, not background.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#hero" class="nav-logo">
+            <img src="logo.png" alt="Nexus Algorithmics" class="nav-logo-img" />
+          </a>
+          <p class="footer-tagline">Institutional-grade algorithmic trading education and mentorship. Built by quants, for quants.</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-col">
+            <h4>Programme</h4>
+            <a href="#curriculum">Curriculum</a>
+            <a href="#team">The Team</a>
+            <a href="#proof">Results</a>
+            <a href="#apply">Apply</a>
+          </div>
+          <div class="footer-col">
+            <h4>Company</h4>
+            <a href="#">About Us</a>
+            <a href="#">Alumni Network</a>
+            <a href="#">Research Blog</a>
+            <a href="#">Contact</a>
+          </div>
+          <div class="footer-col">
+            <h4>Legal</h4>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Risk Disclosure</a>
+            <a href="#">Refund Policy</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-copy mono">© 2026 Nexus Algorithmics Ltd. All rights reserved.</p>
+        <p class="footer-disclaimer">
+          <strong>Risk Disclaimer:</strong> Algorithmic trading and investing in financial instruments involves substantial risk of loss. Past performance of any strategy, algorithm, or trading system is not necessarily indicative of future results. The information provided by Nexus Algorithmics is for educational purposes only and does not constitute financial advice, investment advice, or a recommendation to trade. You should not invest money you cannot afford to lose. Nexus Algorithmics is not a licensed investment adviser or broker-dealer. Always consult a qualified financial professional before making any investment decisions.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
